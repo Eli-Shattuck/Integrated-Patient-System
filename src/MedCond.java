@@ -1,8 +1,8 @@
 public class MedCond {
-    private String mdContact;
-    private String mdPhone;
-    private String algType;
-    private String illType;
+    private String mdContact; // Name of medical contact for patient (physician’s name)
+    private String mdPhone; // Phone number of medical contact
+    private String algType; // Known allergies, must select from: none, food, medication, other
+    private String illType; // Known illnesses, must select from: none, CHD, diabetes, asthma, other
 
     public MedCond(String mdContact, String mdPhone, String algType, String illType) {
         this.mdContact = mdContact;
