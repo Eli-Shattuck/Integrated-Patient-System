@@ -9,6 +9,18 @@ public class PatientProf {
     private String patientType; // Category of patient, must be either “Pediatric”, “Adult”, or “Senior”
     private MedCond medCondInfo;
 
+    public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float coPay, String insuType, String patientType, MedCond medCondInfo) {
+        this.adminID = adminID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.coPay = coPay;
+        this.insuType = insuType;
+        this.patientType = patientType;
+        this.medCondInfo = medCondInfo;
+    }
+
     public String getAdminID() {
         return adminID;
     }
