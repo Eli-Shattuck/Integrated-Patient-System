@@ -1,5 +1,9 @@
 public class PatientProfInterface {
+    private String fileName;
+    private PatientProfDB dataBase;
+
     public PatientProfInterface(String fileName) {
+        this.fileName = fileName;
 
     }
 
