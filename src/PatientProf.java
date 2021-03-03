@@ -1,4 +1,6 @@
-public class PatientProf {
+import java.io.Serializable;
+
+public class PatientProf implements Serializable {
     private String adminID; // ID number of administrative personnel that created the profile.
     private String firstName; // Patient's first name
     private String lastName; // Patient's last name
@@ -91,5 +93,20 @@ public class PatientProf {
 
     public void updateMedCondInfo(MedCond medCondInfo) {
         this.medCondInfo = medCondInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "PatientProf{\n" +
+                "\tadminID='"       + adminID                   + "',\n" +
+                "\tfirstName='"     + firstName                 + "',\n" +
+                "\tlastName='"      + lastName                  + "',\n" +
+                "\taddress='"       + address                   + "',\n" +
+                "\tphone='"         + phone                     + "',\n" +
+                "\tcoPay="          + coPay                     + "',\n" +
+                "\tinsuType='"      + insuType                  + "',\n" +
+                "\tpatientType='"   + patientType               + "',\n" +
+                "\tmedCondInfo="    + medCondInfo.toString() + '\n' +
+                '}';
     }
 }

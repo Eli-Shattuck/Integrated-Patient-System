@@ -1,4 +1,6 @@
-public class MedCond {
+import java.io.Serializable;
+
+public class MedCond implements Serializable {
     private String mdContact; // Name of medical contact for patient (physician’s name)
     private String mdPhone; // Phone number of medical contact
     private String algType; // Known allergies, must select from: none, food, medication, other
@@ -41,5 +43,15 @@ public class MedCond {
 
     public void setIllType(String illType) {
         this.illType = illType;
+    }
+
+    @Override
+    public String toString() {
+        return "MedCond{\n" +
+                "\t\tmdContact='"   + mdContact   + "',\n" +
+                "\t\tmdPhone='"     + mdPhone     + "',\n" +
+                "\t\talgType='"     + algType     + "',\n" +
+                "\t\tillType='"     + illType     + "',\n" +
+                "\t}";
     }
 }
