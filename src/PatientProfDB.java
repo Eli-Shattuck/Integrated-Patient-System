@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PatientProfDB implements Serializable {
@@ -37,7 +36,16 @@ public class PatientProfDB implements Serializable {
      * successful.
      */
     public boolean deleteProfile(String adminID, String lastName) {
-        return false;
+        boolean deleted = false;
+        for(int i = 0; i < this.patientList.size(); i++) {
+            PatientProf searchCandidate  = this.patientList.get(i);
+            if(searchCandidate.getAdminID().equals(adminID) && searchCandidate.getLastName().equals(lastName)) {
+                this.patientList.remove(i);
+                deleted = true;
+                break;
+            }
+        }
+        return deleted;
     }
 
     /*
@@ -59,11 +67,13 @@ public class PatientProfDB implements Serializable {
     }
 
     public PatientProf findFirstProfile() {
-        return null;
+        return this.patientList.get(0);
     }
 
     public PatientProf findNextProfile() {
-        return null;
+        PatientProf nextPatient = this.patientList.get(currentPatientIndex);
+        currentPatientIndex++;
+        return nextPatient;
     }
 
     /*
