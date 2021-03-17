@@ -9,8 +9,9 @@ public class PatientProf implements Serializable {
     private float coPay; // Co-pay associated with the insurance
     private String insuType; // Type of insurance, must be either "Private" or "Government"
     private String patientType; // Category of patient, must be either “Pediatric”, “Adult”, or “Senior”
-    private MedCond medCondInfo;
+    private MedCond medCondInfo; // object to hold medical condition information for this patient
 
+    // creates a new PatientProf object from the given information
     public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float coPay, String insuType, String patientType, MedCond medCondInfo) {
         this.adminID = adminID;
         this.firstName = firstName;
@@ -23,6 +24,7 @@ public class PatientProf implements Serializable {
         this.medCondInfo = medCondInfo;
     }
 
+    //standard getters and setters for every field of PatientProf
     public String getAdminID() {
         return adminID;
     }
@@ -95,18 +97,18 @@ public class PatientProf implements Serializable {
         this.medCondInfo = medCondInfo;
     }
 
+    // toString for printing
     @Override
     public String toString() {
-        return "PatientProf{\n" +
-                "\tadminID='"       + adminID                   + "',\n" +
-                "\tfirstName='"     + firstName                 + "',\n" +
-                "\tlastName='"      + lastName                  + "',\n" +
-                "\taddress='"       + address                   + "',\n" +
-                "\tphone='"         + phone                     + "',\n" +
-                "\tcoPay="          + coPay                     + "',\n" +
-                "\tinsuType='"      + insuType                  + "',\n" +
-                "\tpatientType='"   + patientType               + "',\n" +
-                "\tmedCondInfo="    + medCondInfo.toString() + '\n' +
-                '}';
+        return "Patient Profile:\n" +
+                "\tadmin ID = '"                + adminID                   + "',\n" +
+                "\tfirst name = '"              + firstName                 + "',\n" +
+                "\tlast name = '"               + lastName                  + "',\n" +
+                "\taddress = '"                 + address                   + "',\n" +
+                "\tphone = '"                   + phone                     + "',\n" +
+                "\tcoPay = '"                   + coPay                     + "',\n" +
+                "\tinsurance type = '"          + insuType                  + "',\n" +
+                "\tpatient type = '"            + patientType               + "',\n" +
+                "\tmedical condition info:"     + medCondInfo.toString()     + '\n';
     }
 }

@@ -24,7 +24,7 @@ public class Menu<K> extends ArrayList<MenuItem<K>>{
             String in = scanner.nextLine(); // get input from user
 
             for (MenuItem<K> mi : this) { //check every menu item
-                if (mi.getValidInputs().contains(in)) { //if the provided input is a valid input for a menu item
+                if (mi.getValidInputs().contains(in.toUpperCase())) { //if the provided input is a valid input for a menu item
                     Consumer<K> toAccept = mi.getOnSelected();
                     if(toAccept != null) toAccept.accept(input); //run that menu items associated function
                     return; // leave loop

@@ -6,6 +6,7 @@ public class MedCond implements Serializable {
     private String algType; // Known allergies, must select from: none, food, medication, other
     private String illType; // Known illnesses, must select from: none, CHD, diabetes, asthma, other
 
+    // creates a new MedCond object from the given information
     public MedCond(String mdContact, String mdPhone, String algType, String illType) {
         this.mdContact = mdContact;
         this.mdPhone = mdPhone;
@@ -13,6 +14,7 @@ public class MedCond implements Serializable {
         this.illType = illType;
     }
 
+    //standard getters and setters for every field of PatientProf
     public String updateMdContact() {
         return mdContact;
     }
@@ -45,13 +47,13 @@ public class MedCond implements Serializable {
         this.illType = illType;
     }
 
+    // toString for printing
     @Override
     public String toString() {
-        return "MedCond{\n" +
-                "\t\tmdContact='"   + mdContact   + "',\n" +
-                "\t\tmdPhone='"     + mdPhone     + "',\n" +
-                "\t\talgType='"     + algType     + "',\n" +
-                "\t\tillType='"     + illType     + "',\n" +
-                "\t}";
+        return "\n" +
+                "\t\tmedical contact = '"   + mdContact   + "',\n" +
+                "\t\tmedical phone = '"     + mdPhone     + "',\n" +
+                "\t\tallergy type = '"      + algType     + "',\n" +
+                "\t\tillness type = '"      + illType     + "',\n";
     }
 }

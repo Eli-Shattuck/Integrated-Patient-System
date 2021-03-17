@@ -2,10 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class PatientProfDB implements Serializable {
-    private int numPatient;
-    private int currentPatientIndex;
-    private String fileName;
-    private ArrayList<PatientProf> patientList;
+    private int numPatient; // number of patient profiles in the database
+    private int currentPatientIndex; // index of the current patient profile
+    private String fileName; // name of the file to read and write from to save and restore the database
+    private ArrayList<PatientProf> patientList; // list to keep track of the patients in the database
 
     /*
      * This is a constructor method which accepts the name of the file in which the
@@ -37,10 +37,11 @@ public class PatientProfDB implements Serializable {
      */
     public boolean deleteProfile(String adminID, String lastName) {
         boolean deleted = false;
-        for(int i = 0; i < this.patientList.size(); i++) {
+        for(int i = 0; i < this.getNumPatient(); i++) {
             PatientProf searchCandidate  = this.patientList.get(i);
             if(searchCandidate.getAdminID().equals(adminID) && searchCandidate.getLastName().equals(lastName)) {
                 this.patientList.remove(i);
+                this.numPatient--;
                 deleted = true;
                 break;
             }
@@ -55,7 +56,7 @@ public class PatientProfDB implements Serializable {
      */
     public PatientProf findProfile(String adminID, String lastName) {
         int j = -1;
-        for(int i = 0; i < this.patientList.size();i++){
+        for(int i = 0; i < this.getNumPatient();i++){
             PatientProf searchCandidate  = this.patientList.get(i);
             if(searchCandidate.getAdminID().equals(adminID) && searchCandidate.getLastName().equals(lastName)){
                 j = i;
@@ -66,13 +67,36 @@ public class PatientProfDB implements Serializable {
         return this.patientList.get(j);
     }
 
+    /*
+     * returns the first profile in the list if it exists
+     */
     public PatientProf findFirstProfile() {
+        if(this.getNumPatient() <= 0) return null;
         return this.patientList.get(0);
     }
 
+    /*
+     * Sets the patient index to 0
+     */
+    public void resetCurrentPatientIndex(){
+        currentPatientIndex = 0;
+    }
+
+    /*
+     * returns the number of patients in the database
+     */
+
+    public int getNumPatient(){
+        return numPatient;
+    }
+    /*
+     * This method finds and returns the profile from the database based on the currentPatientIndex
+     * and then increments the index
+     */
     public PatientProf findNextProfile() {
         PatientProf nextPatient = this.patientList.get(currentPatientIndex);
         currentPatientIndex++;
+        if(currentPatientIndex > this.getNumPatient()) resetCurrentPatientIndex();
         return nextPatient;
     }
 
@@ -94,5 +118,6 @@ public class PatientProfDB implements Serializable {
         FileInputStream inputStream = new FileInputStream(fileName);
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         this.patientList = (ArrayList<PatientProf>)objectInputStream.readObject();
+        this.numPatient = patientList.size();
     }
 }
