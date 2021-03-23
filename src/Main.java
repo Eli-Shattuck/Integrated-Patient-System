@@ -6,7 +6,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //create a Patient Profile Interface
-        PatientProfInterface ppi = new PatientProfInterface("testDBFile.txt");
+//        PatientProfInterface ppi = new PatientProfInterface("testDBFile.txt");
+        PatientProfInterface ppi = new PatientProfInterface("databaseSerialize.txt");
         // continually ask user for input (the ppi can halt the program, so the while is not an infinte loop)
         while(true) {
             ppi.getUserChoice();
