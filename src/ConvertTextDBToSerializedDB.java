@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-
 /*
  * class used to convert a plaintext database file
  * into the standard serialized list format that

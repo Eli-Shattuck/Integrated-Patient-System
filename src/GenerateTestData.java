@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 /*
  * class used to generate dummy data for testing the database
  */

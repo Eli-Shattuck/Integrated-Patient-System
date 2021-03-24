@@ -186,9 +186,11 @@ public class PatientProfInterface {
 
     private void displayAllPatientProf() {
         dataBase.resetCurrentPatientIndex(); // reset the index in the database to 0
+        System.out.print("Please input your adminID.\n>>> "); //get the adminID
+        String adminID = scanner.nextLine();
         for (int i = 0; i < dataBase.getNumPatient(); i++) {
             PatientProf patientProf = dataBase.findNextProfile();
-            displayPatientProf(patientProf); // for each profile display it
+            if (patientProf.getAdminID().equals(adminID)) displayPatientProf(patientProf); // for each profile display it
         }
     }
 
